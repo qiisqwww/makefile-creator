@@ -1,0 +1,17 @@
+all: prog files.lst archive
+
+# Компиляция программы
+prog:
+	gcc prog.c data.c -o prog
+
+# Создание списка файлов
+files.lst:
+	dir /B > files.lst
+
+# Архивация файлов в zip
+archive: files.lst
+	7z a distr.zip *.*
+
+# Очистка сгенерированных файлов
+clean:
+	del /Q prog files.lst distr.zip
